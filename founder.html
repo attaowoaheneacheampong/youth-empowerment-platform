@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Founders - Youth Empowerment Advocate</title>
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", sans-serif;
+    }
+
+    body {
+      background: url("download/youth.jpg") no-repeat center center/cover;
+      background-attachment: fixed;
+      color: #fff;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: -1;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .founders {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      padding: 30px;
+      flex: 1 1 320px;
+      max-width: 480px;
+      text-align: center;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+    }
+
+    .card img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      margin-bottom: 20px;
+      border: 3px solid #fff;
+      object-fit: cover;
+    }
+
+    .card h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      font-size: 15px;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    /* Social icons */
+    .social-links {
+      margin-top: 15px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .social-links a img {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .social-links a img:hover {
+      transform: scale(1.2);
+      box-shadow: 0 0 10px rgba(0,255,204,0.7);
+    }
+
+    .message {
+      background: rgba(255,255,255,0.1);
+      border-radius: 15px;
+      padding: 30px;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+      margin-bottom: 30px;
+    }
+
+    .message h2 {
+      margin-bottom: 15px;
+      font-size: 26px;
+      color: #00ffcc;
+    }
+
+    .message p {
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    .back-btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background: #00b894;
+      color: #fff;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .back-btn:hover {
+      background: #019874;
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay"></div>
+  <div class="container">
+    <h1>Meet Our Founders</h1>
+    <p style="margin-bottom:30px;">The passionate voices behind Youth Empowerment Advocate (YEA)</p>
+
+    <div class="founders">
+      <!-- Founder 1 -->
+      <div class="card">
+        <img src="download/man.jpg" alt="Founder Atta Owoahene Acheampong">
+        <h2>Atta Owoahene Acheampong</h2>
+        <p><strong>Founder · Ghana</strong></p>
+        <p>
+          I am passionate about helping young people break free from limiting beliefs and step into growth.  
+          As a writer, I’ve published two books: <em>Shifting Mindset</em> (released free to inspire safety-conscious living)  
+          and <em>A Journey Through the Inner Conflict</em>, currently available on Amazon.  
+          Through YEA, I aim to mentor, connect, and empower youth to achieve their highest potential.
+        </p>
+        <div class="social-links">
+          <a href="https://www.instagram.com/owoaheneofficial?igsh=MWg4cXQzYXBtaDVrMw%3D%3D&utm_source=qr" target="_blank">
+            <img src="download/instagram.jpg" alt="Instagram">
+          </a>
+          <a href="#">
+            <img src="download/twitter.jpg" alt="Twitter">
+          </a>
+          <a href="#">
+            <img src="download/linkedin.jpg" alt="LinkedIn">
+          </a>
+        </div>
+      </div>
+
+      <!-- Founder 2 -->
+      <div class="card">
+        <img src="download/woman.jpg" alt="Co-Founder Ms Sadi">
+        <h2>Ms Sadi</h2>
+        <p><strong>Co-Founder · Pakistan</strong></p>
+        <p>
+          A dedicated writer and advocate for mindset transformation.  
+          One of her renowned works, <em>Mindset Reset</em>, has inspired many in reshaping their perspectives.  
+          As co-founder of YEA, she brings global collaboration and a fresh voice to our mission, 
+          ensuring young people across borders are empowered to lead and innovate.
+        </p>
+        <div class="social-links">
+          <a href="#">
+            <img src="download/instagram.jpg" alt="Instagram">
+          </a>
+          <a href="#">
+            <img src="download/twitter.jpg" alt="Twitter">
+          </a>
+          <a href="#">
+            <img src="download/linkedin.jpg" alt="LinkedIn">
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Message Section -->
+    <div class="message">
+      <h2>Message from Our Founders</h2>
+      <p>
+        At YEA, we believe youth are not just the leaders of tomorrow, they are the leaders of today.  
+        Joining our movement means becoming part of a global community where your voice matters,  
+        your ideas are valued, and your potential is unlocked.  
+        Together, we rise above challenges, create opportunities, and shape a future filled with growth, equity, and impact.  
+        <br><br>
+         Why join us? Because when young people unite, transformation happens.  
+      </p>
+    </div>
+
+    <a href="index.html" class="back-btn">⬅ Back to Home</a>
+  </div>
+</body>
+</html>

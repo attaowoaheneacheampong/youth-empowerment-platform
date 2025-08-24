@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About - Youth Empowerment Advocate</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", sans-serif;
+    }
+
+    body {
+      background: url("download/youth.jpg") no-repeat center center/cover;
+      background-attachment: fixed;
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      z-index: -1;
+    }
+
+    .glass-card {
+      background: rgba(255,255,255,0.1);
+      border-radius: 20px;
+      padding: 40px;
+      max-width: 1000px;
+      backdrop-filter: blur(15px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin: 10px 0;
+      line-height: 1.6;
+    }
+
+    /* Cards section */
+    .card-grid {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      margin: 30px 0;
+      gap: 20px;
+    }
+
+    .info-card {
+      background: rgba(255,255,255,0.15);
+      border-radius: 15px;
+      padding: 25px;
+      flex: 1 1 200px;
+      min-width: 200px;
+      max-width: 220px;
+      text-align: center;
+      text-decoration: none;
+      color: #fff;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .info-card:hover {
+      transform: translateY(-10px) scale(1.05);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+    }
+
+    .info-card img {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+      margin-bottom: 15px;
+      border-radius: 10px;
+    }
+
+    .info-card h2 {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+      color: #00ffae;
+    }
+
+    .info-card p {
+      font-size: 0.95rem;
+      color: #ddd;
+    }
+
+    .back-btn {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 12px 24px;
+      background: #00ffcc;
+      color: #000;
+      border-radius: 25px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .back-btn:hover {
+      background: #fff;
+      color: #000;
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 1.6rem;
+      }
+      .info-card {
+        flex: 1 1 100%;
+        max-width: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="glass-card">
+    <h1>About Youth Empowerment Advocate</h1>
+    <p>Discover our story, values, and the impact we're making together</p>
+
+    <h2>Our Story</h2>
+    <p>Youth Empowerment Advocate (YEA) is a movement built by young people, for young people. We exist to inspire, educate, and empower the next generation to rise above challenges, unlock their potential, and become changemakers in their communities and beyond.</p>
+
+    <p>At YEA, we believe that empowerment starts with a shift in mindset. By creating a platform where voices are heard, ideas are shared, and opportunities are made accessible, we aim to bridge the gap between today’s challenges and tomorrow’s solutions.</p>
+
+    <p>This is more than a movement, it is a community. Every youth who joins adds strength, vision, and energy to a collective force dedicated to growth, equity, and sustainable impact. Together, we are not just dreaming of a better future,we are building it.</p>
+
+    <!-- Cards Section -->
+    <div class="card-grid">
+      <a href="#" class="info-card">
+        <img src="download/empower.jpg" alt="Empower">
+        <h2>Empower</h2>
+        <p>Resources and training for young advocates to grow their skills.</p>
+      </a>
+      <a href="#" class="info-card">
+        <img src="download/connect.jpg" alt="Connect">
+        <h2>Connect</h2>
+        <p>Building global networks to unite changemakers across borders.</p>
+      </a>
+      <a href="#" class="info-card">
+        <img src="download/impact.jpg" alt="Impact">
+        <h2>Impact</h2>
+        <p>Driving real change with youth-led initiatives worldwide.</p>
+      </a>
+      <a href="#" class="info-card">
+        <img src="download/makedifference.jpg" alt="Make a Difference">
+        <h2>Make a Difference</h2>
+        <p>Join thousands of advocates shaping the future of our world.</p>
+      </a>
+    </div>
+
+    <a href="index.html" class="back-btn">⬅ Back to Home</a>
+  </div>
+</body>
+</html>

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - Youth Empowerment Advocate</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Segoe UI", sans-serif;
+      background: url("download/youth.jpg") no-repeat center center/cover;
+      background-attachment: fixed;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+
+    /* Glass card */
+    .card {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(12px);
+      border-radius: 16px;
+      padding: 30px;
+      max-width: 800px;
+      width: 100%;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    }
+
+    h1 {
+      font-size: 32px;
+      margin-bottom: 10px;
+      text-align: center;
+      color: #00ffcc;
+    }
+
+    .subtitle {
+      text-align: center;
+      font-size: 16px;
+      margin-bottom: 30px;
+      color: #ddd;
+    }
+
+    h2 {
+      font-size: 22px;
+      margin: 20px 0 10px;
+      color: #00ffcc;
+    }
+
+    .info p, .info a {
+      font-size: 16px;
+      margin: 6px 0;
+    }
+
+    .info a {
+      color: #00ffcc;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin: 15px 0;
+    }
+
+    .social-icons img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #fff;
+      padding: 5px;
+      cursor: pointer;
+      transition: transform 0.3s, background 0.3s;
+    }
+
+    .social-icons img:hover {
+      transform: scale(1.2);
+      background: #00ffcc;
+    }
+
+    /* WhatsApp Join Button */
+    .whatsapp-link {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 16px;
+      background: #25d366;
+      color: #fff !important;
+      border-radius: 8px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+
+    .whatsapp-link:hover {
+      background: #1ebe5d;
+    }
+
+    form {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    input, textarea, select {
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      outline: none;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      background: #00ffcc;
+      color: #000;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #00d4aa;
+    }
+
+    .back-btn {
+      display: inline-block;
+      margin-top: 25px;
+      padding: 10px 16px;
+      border: none;
+      border-radius: 8px;
+      background: #4cafef;
+      color: #fff;
+      font-size: 14px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .back-btn:hover {
+      background: #2196f3;
+    }
+
+    /* Hidden by default */
+    #thankyou-card {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="card" id="contact-card">
+    <h1>Get in Touch</h1>
+    <p class="subtitle">Have questions? Want to collaborate? We'd love to hear from you!</p>
+
+    <!-- Info Section -->
+    <h2>Let's Connect</h2>
+    <div class="info">
+      <p><strong>Email:</strong> <a href="mailto:contact.youthadvocate@gmail.com">contact.youthadvocate@gmail.com</a></p>
+      <p><strong>Phone:</strong> +233 2087-2855</p>
+      <p><strong>Address:</strong> 123 Youth Street, Empowerment City, EC 12345</p>
+      <p><strong>WhatsApp Channel:</strong> 
+        <a href="https://whatsapp.com/channel/0029Vb643LG35fLnQWYink20" target="_blank" class="whatsapp-link">
+          Join Our Community
+        </a>
+      </p>
+    </div>
+
+    <!-- Social Links -->
+    <h2>Follow Our Movement</h2>
+    <div class="social-icons">
+      <a href="#"><img src="download/facebook.jpg" alt="Facebook"></a>
+      <a href="#"><img src="download/twitter.jpg" alt="Twitter"></a>
+      <a href="#"><img src="download/instagram.jpg" alt="Instagram"></a>
+      <a href="#"><img src="download/whatsapp.jpg" alt="WhatsApp"></a>
+      <a href="#"><img src="download/linkedin.jpg" alt="LinkedIn"></a>
+    </div>
+
+    <!-- Contact Form -->
+    <h2>Send Us a Message</h2>
+    <form id="contact-form" action="https://formspree.io/f/mblarynr" method="POST">
+      <input type="text" name="first-name" placeholder="First Name" required>
+      <input type="text" name="last-name" placeholder="Last Name" required>
+      <input type="email" name="email" placeholder="Email Address" required>
+      <select name="topic" required>
+        <option value="">Select a Topic</option>
+        <option value="collaboration">Collaboration</option>
+        <option value="support">Support</option>
+        <option value="volunteer">Volunteer</option>
+        <option value="general">General Inquiry</option>
+      </select>
+      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+
+    <!-- Back to Home -->
+    <a href="index.html" class="back-btn">⬅ Back to Home</a>
+  </div>
+
+  <!-- Thank You Card -->
+  <div class="card" id="thankyou-card">
+    <h1>🎉 Thank You!</h1>
+    <p class="subtitle">Thank you for submitting your message. We will write back to you at the email you provided.</p>
+    <button class="back-btn" onclick="showForm()">⬅ Back</button>
+  </div>
+
+  <script>
+    const form = document.getElementById("contact-form");
+    const contactCard = document.getElementById("contact-card");
+    const thankyouCard = document.getElementById("thankyou-card");
+
+    form.addEventListener("submit", async function(e) {
+      e.preventDefault(); // stop normal form submission
+
+      const formData = new FormData(form);
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        contactCard.style.display = "none";
+        thankyouCard.style.display = "block";
+        form.reset();
+      } else {
+        alert("Oops! Something went wrong, please try again.");
+      }
+    });
+
+    function showForm() {
+      thankyouCard.style.display = "none";
+      contactCard.style.display = "block";
+    }
+  </script>
+</body>
+</html>

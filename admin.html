@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin — Youth Empowerment Advocate</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Segoe UI", sans-serif; }
+
+    body {
+      background: url("download/youth.jpg") no-repeat center center/cover;
+      background-attachment: fixed;
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.7);
+      z-index: -1;
+    }
+
+    header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 50px;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+    }
+
+    header h1 { font-size: 1.6rem; font-weight: 700; color: #00ffae; display: flex; align-items: center; gap: 12px; }
+    header h1 img { height: 36px; width: auto; border-radius: 8px; }
+
+    nav ul { display: flex; list-style: none; gap: 22px; }
+    nav a { color: #fff; text-decoration: none; transition: color .25s; }
+    nav a:hover { color: #00ffae; }
+
+    .wrap {
+      max-width: 900px; width: 92%;
+      margin: 60px auto; flex: 1;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.1);
+      border-radius: 20px;
+      padding: 28px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.45);
+    }
+
+    .title { font-size: 1.8rem; color: #00ffcc; margin-bottom: 10px; font-weight: 700; }
+    .subtitle { color: #ddd; margin-bottom: 18px; }
+
+    .form-grid { display: grid; gap: 14px; margin-top: 10px; }
+    label { font-weight: 600; color: #aefbe8; }
+    input {
+      width: 100%; padding: 12px 14px; border: none; border-radius: 10px;
+      outline: none; font-size: 1rem;
+      background: rgba(255,255,255,0.9); color: #000;
+    }
+
+    .row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+    button, .btn {
+      padding: 12px 18px; border: none; border-radius: 12px;
+      font-weight: 700; cursor: pointer; text-decoration: none; display: inline-block;
+      background: #00ffae; color: #000; transition: transform .15s, background .25s;
+    }
+    button:hover, .btn:hover { background: #00d494; transform: translateY(-1px); }
+
+    .muted { font-size: .95rem; color: #cfcfcf; margin-top: 10px; }
+    .warn {
+      background: rgba(255, 194, 0, 0.15);
+      border: 1px solid rgba(255,194,0,0.4);
+      color: #ffd666;
+      padding: 10px 12px; border-radius: 12px; margin-top: 12px;
+      font-size: 0.95rem;
+    }
+
+    .admin-panel { display: none; margin-top: 18px; }
+    .panel-grid { display: grid; gap: 16px; margin-top: 14px; }
+    .panel-item {
+      background: rgba(255,255,255,0.12);
+      border-radius: 14px; padding: 16px; backdrop-filter: blur(8px);
+    }
+    .panel-item h3 { margin-bottom: 8px; color: #aefbe8; }
+
+    footer {
+      text-align: center; padding: 15px;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      font-size: 0.9rem; color: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><img src="download/logo.jpg" alt="Logo"> Youth Empowerment Advocate</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="admin.html">Admin</a></li>
+        <li><a href="founder.html">Founder</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="event.html">Events</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <!-- Login Card -->
+    <section class="card" id="loginCard">
+      <h2 class="title">Admin Login</h2>
+      <p class="subtitle">Enter the admin email and passcode to access shortcuts to your Formspree dashboard.</p>
+
+      <div class="warn">
+        ⚠️ For your security, do <strong>not</strong> enter your real Formspree account password here.
+        Use a custom passcode that you set below in the code. You’ll open the official dashboard in a new tab to sign in securely.
+      </div>
+
+      <div class="form-grid">
+        <div>
+          <label for="adminEmail">Admin Email</label>
+          <input type="email" id="adminEmail" placeholder="you@example.com" autocomplete="username" required>
+        </div>
+        <div>
+          <label for="adminPass">Admin Passcode</label>
+          <input type="password" id="adminPass" placeholder="Enter passcode" autocomplete="current-password" required>
+        </div>
+      </div>
+
+      <div class="row">
+        <button id="loginBtn">Sign In</button>
+        <a class="btn" href="index.html">← Back</a>
+      </div>
+
+      <p class="muted">Tip: Change the <code>ADMIN_EMAIL</code> and <code>ADMIN_PASS</code> constants in this file.</p>
+    </section>
+
+    <!-- Admin Panel -->
+    <section class="card admin-panel" id="adminPanel">
+      <h2 class="title">Welcome, Admin 👋</h2>
+      <p class="subtitle">Quick links & notes to manage your forms.</p>
+
+      <div class="panel-grid">
+        <div class="panel-item">
+          <h3>Formspree Dashboard</h3>
+          <p>Open your official Formspree dashboard in a secure tab. Log in there with your real credentials.</p>
+          <div class="row">
+            <a class="btn" href="https://formspree.io/dashboard" target="_blank" rel="noopener">Open Dashboard</a>
+            <!-- If you want to go directly to a specific form inbox, replace FORM_ID below -->
+            <a class="btn" href="https://formspree.io/forms/xjkonvkz/submissions" target="_blank" rel="noopener">Open Mission Form Inbox</a>
+          </div>
+        </div>
+
+        <div class="panel-item">
+          <h3>Security Note</h3>
+          <p class="muted">
+            This page uses a simple client-side passcode gate. It does <em>not</em> connect to Formspree or store credentials.
+            For real authentication (email/password), use a small backend (e.g., Netlify Functions) with a server-side secret.
+            I can help you add that later whenever you’re ready.
+          </p>
+        </div>
+      </div>
+
+      <div class="row" style="margin-top:14px;">
+        <button id="logoutBtn">Log Out</button>
+        <a class="btn" href="index.html">← Back to Home</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 Youth Empowerment Advocate. All Rights Reserved.
+  </footer>
+
+  <script>
+    // 🔒 CHANGE THESE BEFORE DEPLOYING (do NOT use your real Formspree password)
+    const ADMIN_EMAIL = "contact.youthadvocate@gmail.com";     // <- put your admin login email here
+    const ADMIN_PASS  = "Youth2025";   // <- set a custom passcode (not Formspree password)
+
+    const loginCard  = document.getElementById("loginCard");
+    const adminPanel = document.getElementById("adminPanel");
+    const loginBtn   = document.getElementById("loginBtn");
+    const logoutBtn  = document.getElementById("logoutBtn");
+    const emailInput = document.getElementById("adminEmail");
+    const passInput  = document.getElementById("adminPass");
+
+    // Optional: keep a simple "session" in memory while page is open
+    function showPanel() {
+      loginCard.style.display = "none";
+      adminPanel.style.display = "block";
+    }
+    function showLogin() {
+      adminPanel.style.display = "none";
+      loginCard.style.display = "block";
+      passInput.value = "";
+    }
+
+    loginBtn.addEventListener("click", () => {
+      const email = (emailInput.value || "").trim().toLowerCase();
+      const pass  = passInput.value || "";
+
+      if (!email || !pass) {
+        alert("Please enter both email and passcode.");
+        return;
+      }
+      if (email === ADMIN_EMAIL.toLowerCase() && pass === ADMIN_PASS) {
+        showPanel();
+      } else {
+        alert("Invalid admin email or passcode.");
+      }
+    });
+
+    logoutBtn.addEventListener("click", showLogin);
+  </script>
+</body>
+</html>
