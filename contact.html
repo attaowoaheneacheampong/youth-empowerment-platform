@@ -107,41 +107,40 @@
       gap: 15px;
     }
 
-    /* Enhanced form inputs, textarea, and select */
+    /* Enhanced form inputs for better readability */
     input, textarea, select {
       padding: 14px 16px;
       border: none;
       border-radius: 12px;
       outline: none;
       font-size: 16px;
-      background: rgba(0, 255, 204, 0.15);
-      color: #fff;
+      background: rgba(255, 255, 255, 0.25); /* stronger background for contrast */
+      color: #000; /* dark text for readability */
       backdrop-filter: blur(6px);
       box-shadow: inset 0 2px 8px rgba(0,0,0,0.3);
       transition: background 0.3s, box-shadow 0.3s, transform 0.2s, color 0.3s;
     }
 
+    input::placeholder, textarea::placeholder, select option {
+      color: rgba(50,50,50,0.7); /* darker placeholder */
+    }
+
     input:focus, textarea:focus, select:focus {
-      background: rgba(0, 255, 204, 0.25);
+      background: rgba(255, 255, 255, 0.35);
       box-shadow: inset 0 2px 12px rgba(0,255,204,0.5), 0 4px 12px rgba(0,0,0,0.4);
       transform: scale(1.02);
       color: #000;
     }
 
-    /* Placeholder styling */
-    input::placeholder, textarea::placeholder {
-      color: rgba(255,255,255,0.7);
-    }
-
-    /* Dropdown arrow and style */
+    /* Dropdown arrow */
     select {
-      color: #fff;
       appearance: none;
-      background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg width='14' height='8' viewBox='0 0 14 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L7 7L13 1' stroke='white' stroke-width='2'/%3E%3C/svg%3E");
+      background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg width='14' height='8' viewBox='0 0 14 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L7 7L13 1' stroke='black' stroke-width='2'/%3E%3C/svg%3E");
       background-repeat: no-repeat;
       background-position: right 12px center;
       background-size: 14px 8px;
       padding-right: 36px;
+      color: #000; /* dark text for dropdown */
     }
 
     /* Textarea fixed height */
