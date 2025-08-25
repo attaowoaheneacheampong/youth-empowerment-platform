@@ -25,32 +25,74 @@
     }
 
     header {
-      text-align: center;
-      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
       background: rgba(255, 255, 255, 0.05);
       backdrop-filter: blur(10px);
+      position: relative;
+      z-index: 1000; /* 👈 ensures menu is on top */
     }
 
     header h1 {
-      font-size: 2rem;
+      font-size: 1.5rem;
       font-weight: bold;
       color: #00ffae;
+      margin: 0;
     }
 
-    .back-btn {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 10px 20px;
+    /* Hamburger */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+
+    .menu-toggle span {
+      width: 25px;
+      height: 3px;
       background: #00ffae;
-      color: #000;
-      border-radius: 8px;
-      font-weight: bold;
-      text-decoration: none;
-      transition: background 0.3s ease;
+      border-radius: 2px;
+      transition: 0.3s;
     }
 
-    .back-btn:hover {
-      background: #00d494;
+    nav {
+      display: flex;
+      gap: 20px;
+    }
+
+    nav a {
+      color: #00ffae;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* Mobile menu hidden */
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+        flex-direction: column;
+        background: rgba(0,0,0,0.9);
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+        z-index: 1001;
+      }
+      nav.active {
+        display: flex;
+      }
+      .menu-toggle {
+        display: flex;
+      }
     }
 
     .card {
@@ -67,10 +109,11 @@
     .card h2 {
       color: #00ffae;
       margin-bottom: 15px;
+      font-size: 1.4rem;
     }
 
     .card p {
-      font-size: 1.1rem;
+      font-size: 1rem;
       line-height: 1.6;
       margin-bottom: 10px;
     }
@@ -87,9 +130,7 @@
       cursor: pointer;
       transition: 0.3s;
     }
-    .register-btn:hover {
-      background: #00d494;
-    }
+    .register-btn:hover { background: #00d494; }
 
     form {
       margin-top: 20px;
@@ -142,7 +183,7 @@
       margin-bottom: 15px;
     }
 
-    #backToForm {
+    #backToForm, .back-btn {
       margin-top: 15px;
       padding: 10px 20px;
       background: #00ffae;
@@ -151,6 +192,12 @@
       border-radius: 8px;
       font-weight: bold;
       cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    #backToForm:hover, .back-btn:hover {
+      background: #00d494;
     }
 
     @keyframes fadeIn {
@@ -162,7 +209,17 @@
 <body>
   <header>
     <h1>Welcome Webinar</h1>
-    <a href="index.html" class="back-btn">← Back to Home</a>
+    <div class="menu-toggle" id="menuToggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <nav id="navMenu">
+      <a href="index.html">Home</a>
+      <a href="contact.html">Contact</a>
+      <a href="language.html">Languages</a>
+      <a href="events.html">Events</a>
+    </nav>
   </header>
 
   <div class="card" id="eventCard">
@@ -192,6 +249,9 @@
       <p>Details and the Zoom link will be sent to the email you provided.</p>
       <button id="backToForm">← Back</button>
     </div>
+
+    <!-- Global Back Button -->
+    <a href="index.html" class="back-btn">← Back to Home</a>
   </div>
 
   <script>
@@ -200,13 +260,13 @@
     const successCard = document.getElementById("successCard");
     const backToForm = document.getElementById("backToForm");
 
-    // Show form when clicking Register
+    // Show form
     showFormBtn.addEventListener("click", () => {
       showFormBtn.style.display = "none";
       registerForm.style.display = "block";
     });
 
-    // Handle form submit
+    // Submit form
     registerForm.addEventListener("submit", function(e) {
       e.preventDefault();
 
@@ -228,10 +288,27 @@
       .catch(error => alert("❌ Error: " + error));
     });
 
-    // Back button
+    // Back button (form)
     backToForm.addEventListener("click", () => {
       successCard.style.display = "none";
       registerForm.style.display = "block";
+    });
+
+    // Hamburger toggle
+    const menuToggle = document.getElementById("menuToggle");
+    const navMenu = document.getElementById("navMenu");
+
+    menuToggle.addEventListener("click", () => {
+      navMenu.classList.toggle("active");
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener("click", e => {
+      if (navMenu.classList.contains("active") && 
+          !navMenu.contains(e.target) && 
+          e.target !== menuToggle && !menuToggle.contains(e.target)) {
+        navMenu.classList.remove("active");
+      }
     });
   </script>
 </body>
