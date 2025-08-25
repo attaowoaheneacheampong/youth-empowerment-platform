@@ -18,22 +18,93 @@
       background-attachment: fixed;
       color: #fff;
       min-height: 100vh;
-      padding: 20px;
+      display: flex;
+      flex-direction: column;
     }
 
-    .overlay {
+    body::before {
+      content: "";
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.6);
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.65);
       z-index: -1;
     }
 
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      position: relative;
+      z-index: 1000;
+    }
+
+    header h1 {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #00ffae;
+    }
+
+    /* Hamburger */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+
+    .menu-toggle span {
+      width: 25px;
+      height: 3px;
+      background: #00ffae;
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+    }
+
+    nav a {
+      color: #00ffae;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* Mobile menu */
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+        flex-direction: column;
+        background: rgba(0,0,0,0.9);
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+      }
+      nav.active {
+        display: flex;
+      }
+      .menu-toggle {
+        display: flex;
+      }
+    }
+
+    /* Container */
     .container {
+      flex: 1;
       max-width: 1100px;
       margin: auto;
+      padding: 20px;
       text-align: center;
     }
 
@@ -54,6 +125,11 @@
       text-align: center;
       backdrop-filter: blur(8px);
       box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
     }
 
     .card img {
@@ -68,6 +144,7 @@
     .card h2 {
       font-size: 24px;
       margin-bottom: 10px;
+      color: #00ffcc;
     }
 
     .card p {
@@ -103,12 +180,14 @@
       backdrop-filter: blur(8px);
       box-shadow: 0 8px 20px rgba(0,0,0,0.5);
       margin-bottom: 30px;
+      text-align: left;
     }
 
     .message h2 {
       margin-bottom: 15px;
       font-size: 26px;
       color: #00ffcc;
+      text-align: center;
     }
 
     .message p {
@@ -118,9 +197,10 @@
 
     .back-btn {
       display: inline-block;
+      margin-top: 15px;
       padding: 10px 20px;
-      background: #00b894;
-      color: #fff;
+      background: #00ffae;
+      color: #000;
       border-radius: 8px;
       text-decoration: none;
       font-weight: bold;
@@ -128,12 +208,26 @@
     }
 
     .back-btn:hover {
-      background: #019874;
+      background: #00d494;
     }
   </style>
 </head>
 <body>
-  <div class="overlay"></div>
+  <header>
+    <h1>Our Founders</h1>
+    <div class="menu-toggle" id="menuToggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <nav id="navMenu">
+      <a href="index.html">Home</a>
+      <a href="contact.html">Contact</a>
+      <a href="language.html">Languages</a>
+      <a href="events.html">Events</a>
+    </nav>
+  </header>
+
   <div class="container">
     <h1>Meet Our Founders</h1>
     <p style="margin-bottom:30px;">The passionate voices behind Youth Empowerment Advocate (YEA)</p>
@@ -151,7 +245,7 @@
           Through YEA, I aim to mentor, connect, and empower youth to achieve their highest potential.
         </p>
         <div class="social-links">
-          <a href="https://www.instagram.com/owoaheneofficial?igsh=MWg4cXQzYXBtaDVrMw%3D%3D&utm_source=qr" target="_blank">
+          <a href="https://www.instagram.com/owoaheneofficial" target="_blank">
             <img src="download/instagram.jpg" alt="Instagram">
           </a>
           <a href="#">
@@ -197,11 +291,29 @@
         your ideas are valued, and your potential is unlocked.  
         Together, we rise above challenges, create opportunities, and shape a future filled with growth, equity, and impact.  
         <br><br>
-         Why join us? Because when young people unite, transformation happens.  
+        Why join us? Because when young people unite, transformation happens.  
       </p>
     </div>
 
     <a href="index.html" class="back-btn">⬅ Back to Home</a>
   </div>
+
+  <script>
+    const menuToggle = document.getElementById("menuToggle");
+    const navMenu = document.getElementById("navMenu");
+
+    menuToggle.addEventListener("click", () => {
+      navMenu.classList.toggle("active");
+    });
+
+    document.addEventListener("click", e => {
+      if (navMenu.classList.contains("active") &&
+          !navMenu.contains(e.target) &&
+          e.target !== menuToggle &&
+          !menuToggle.contains(e.target)) {
+        navMenu.classList.remove("active");
+      }
+    });
+  </script>
 </body>
 </html>
