@@ -30,6 +30,7 @@
       padding: 20px 50px;
       background: rgba(255, 255, 255, 0.05);
       backdrop-filter: blur(10px);
+      position: relative;
     }
 
     header h1 { font-size: 1.8rem; font-weight: bold; color: #00ffae; display: flex; align-items: center; flex-direction: column; }
@@ -51,6 +52,41 @@
     nav ul li { margin-left: 30px; }
     nav ul li a { text-decoration: none; color: #fff; font-size: 1rem; transition: 0.3s; }
     nav ul li a:hover { color: #00ffae; }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      font-size: 2rem;
+      background: none;
+      border: none;
+      color: #00ffae;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+        position: absolute;
+        top: 70px; right: 20px;
+        background: rgba(0,0,0,0.9);
+        border-radius: 10px;
+        padding: 15px;
+        z-index: 1000;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      nav.show {
+        display: block;
+      }
+
+      .hamburger {
+        display: block;
+      }
+    }
 
     .card {
       max-width: 800px; margin: 60px auto;
@@ -229,7 +265,11 @@
       <img src="download/logo.jpg" alt="Logo"> Youth Empowerment Advocate
       <span class="slogan">"The Voice of Transformation"</span>
     </h1>
-    <nav>
+
+    <!-- Hamburger -->
+    <button class="hamburger" id="hamburgerBtn">☰</button>
+
+    <nav id="navbar">
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="admin.html">Admin</a></li>
@@ -369,6 +409,13 @@
       if (userText.toLowerCase().includes("mindset")) botReply = "A growth mindset means believing you can learn and improve. Failures are lessons, not setbacks!";
 
       setTimeout(() => addMessage("Bot", botReply), 600);
+    });
+
+    // Hamburger logic
+    const hamburgerBtn = document.getElementById("hamburgerBtn");
+    const navbar = document.getElementById("navbar");
+    hamburgerBtn.addEventListener("click", () => {
+      navbar.classList.toggle("show");
     });
   </script>
 </body>
