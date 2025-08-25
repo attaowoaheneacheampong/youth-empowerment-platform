@@ -1,182 +1,193 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Youth Empowerment Advocate - News</title>
-  <style>
-    body {
-      background: url("download/youth.jpg") no-repeat center center/cover;
-      background-attachment: fixed;
-      color: #fff;
-      font-family: "Segoe UI", sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-    header { background: rgba(0, 0, 0, 0.6); padding: 15px; text-align: center; }
-    header nav a {
-      color: white; margin: 0 15px; text-decoration: none; font-weight: bold; transition: color 0.3s;
-    }
-    header nav a:hover { color: #00ff99; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Youth Empowerment Advocate - News & Scholarships</title>
+<style>
+  body {
+    background: url("download/youth.jpg") no-repeat center center/cover;
+    background-attachment: fixed;
+    color: #fff;
+    font-family: "Segoe UI", sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  header { background: rgba(0, 0, 0, 0.6); padding: 15px; text-align: center; }
+  header nav a {
+    color: white; margin: 0 15px; text-decoration: none; font-weight: bold; transition: color 0.3s;
+  }
+  header nav a:hover { color: #00ff99; }
 
-    /* Search Bar */
-    .search-container {
-      text-align: center; margin: 20px auto; display: flex; justify-content: center; gap: 10px;
-    }
-    .search-container input {
-      padding: 10px 15px; width: 55%; border: none; border-radius: 25px;
-      outline: none; font-size: 1rem;
-    }
-    .search-container button {
-      padding: 10px 20px; border: none; border-radius: 25px; font-size: 1rem;
-      cursor: pointer; font-weight: bold; background: #00ff99; color: #000;
-      transition: background 0.3s;
-    }
-    .search-container button:hover { background: #00cc77; }
+  /* Search Bar */
+  .search-container {
+    text-align: center; margin: 20px auto; display: flex; justify-content: center; gap: 10px;
+  }
+  .search-container input {
+    padding: 10px 15px; width: 55%; border: none; border-radius: 25px;
+    outline: none; font-size: 1rem;
+  }
+  .search-container button {
+    padding: 10px 20px; border: none; border-radius: 25px; font-size: 1rem;
+    cursor: pointer; font-weight: bold; background: #00ff99; color: #000;
+    transition: background 0.3s;
+  }
+  .search-container button:hover { background: #00cc77; }
 
-    /* News Cards */
-    .news-container {
-      max-width: 1200px; margin: 30px auto;
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 25px; padding: 20px;
-    }
-    .news-card {
-      background: rgba(255,255,255,0.1); border-radius: 15px;
-      backdrop-filter: blur(10px); padding: 20px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.3); transition: transform 0.3s;
-    }
-    .news-card:hover { transform: translateY(-10px); }
-    .news-card img {
-      width: 100%; border-radius: 10px; margin-bottom: 15px;
-    }
-    .news-card h3 { margin-bottom: 10px; font-size: 1.3rem; color: #00ff99; }
-    .news-card p { font-size: 1rem; margin-bottom: 15px; }
-    .news-card a {
-      background: #00ff99; color: #000;
-      padding: 8px 15px; text-decoration: none; border-radius: 8px; font-weight: bold;
-    }
-    .news-card a:hover { background: #00cc77; }
+  /* News & Scholarship Cards */
+  .news-container {
+    max-width: 1200px; margin: 30px auto;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px; padding: 20px;
+  }
+  .news-card {
+    background: rgba(255,255,255,0.1); border-radius: 15px;
+    backdrop-filter: blur(10px); padding: 20px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3); transition: transform 0.3s;
+    display: none; /* initially hidden for Load More */
+  }
+  .news-card.show { display: block; }
+  .news-card:hover { transform: translateY(-10px); }
+  .news-card img {
+    width: 100%; border-radius: 10px; margin-bottom: 15px;
+  }
+  .news-card h3 { margin-bottom: 10px; font-size: 1.3rem; color: #00ff99; }
+  .news-card p { font-size: 1rem; margin-bottom: 15px; }
+  .news-card a {
+    background: #00ff99;
+    color: #000;
+    padding: 8px 15px; text-decoration: none; border-radius: 8px; font-weight: bold;
+  }
+  .news-card a:hover { background: #00cc77; }
 
-    /* Load More Button */
-    .load-more-container {
-      text-align: center; margin: 20px;
-    }
-    #loadMoreBtn {
-      padding: 12px 25px; border: none; border-radius: 25px; font-size: 1rem;
-      cursor: pointer; font-weight: bold; background: #ff9800; color: #000;
-      transition: background 0.3s;
-    }
-    #loadMoreBtn:hover { background: #e68900; }
-  </style>
+  /* Load More Button */
+  .load-more-container {
+    text-align: center; margin: 20px;
+  }
+  #loadMoreBtn {
+    padding: 12px 25px; border: none; border-radius: 25px; font-size: 1rem;
+    cursor: pointer; font-weight: bold; background: #ff9800; color: #000;
+    transition: background 0.3s;
+  }
+  #loadMoreBtn:hover { background: #e68900; }
+</style>
 </head>
 <body>
 
-  <header>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="news.html">News</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </header>
+<header>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="news.html">News</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
 
-  <!-- Search with buttons -->
-  <div class="search-container">
-    <input type="text" id="searchInput" placeholder="Search Ghana news...">
-    <button onclick="searchNews()">Search</button>
-    <button onclick="refreshNews()">Refresh</button>
+<div class="search-container">
+  <input type="text" id="searchInput" placeholder="Search news, scholarships, events...">
+  <button onclick="searchNews()">Search</button>
+  <button onclick="refreshNews()">Refresh</button>
+</div>
+
+<section class="news-container" id="newsContainer">
+  <!-- Scholarship Cards -->
+  <div class="news-card show">
+    <img src="download/scholarship1.jpg" alt="Scholarship">
+    <h3>Think Big Scholarship 2025</h3>
+    <p><strong>Deadline:</strong> 31st October 2025</p>
+    <p>Offered by University of Bristol for international students in undergraduate & postgraduate programs.</p>
+    <a href="https://theglobalscholarship.org/internships/think-big-scholarship-2025?source=main" target="_blank">Read More</a>
   </div>
 
-  <!-- News Section -->
-  <section class="news-container" id="newsContainer">
-    <p>Loading news...</p>
-  </section>
-
-  <!-- Load More Button -->
-  <div class="load-more-container">
-    <button id="loadMoreBtn" onclick="loadMoreNews()">Load More</button>
+  <div class="news-card show">
+    <img src="download/scholarship2.jpg" alt="Scholarship">
+    <h3>Open Doors Russian Scholarship 2025</h3>
+    <p><strong>Deadline:</strong> 15th November 2025</p>
+    <p>Fully funded scholarship for international students pursuing studies in Russia.</p>
+    <a href="https://theglobalscholarship.org/scholarships/open-doors-russian-scholarship-2025?source=main" target="_blank">Read More</a>
   </div>
 
-  <script>
-    const apiKey = "0fcf70c0d39f46b0b0df950648883daf";
-    const newsContainer = document.getElementById("newsContainer");
-    const searchInput = document.getElementById("searchInput");
+  <div class="news-card show">
+    <img src="download/scholarship3.jpg" alt="Scholarship">
+    <h3>SIT Study Abroad Scholarship 2025</h3>
+    <p><strong>Deadline:</strong> Varies</p>
+    <p>Financial assistance for students participating in School for International Training (SIT) programs worldwide.</p>
+    <a href="https://theglobalscholarship.org/abroad/sit-study-abroad-scholarship-2025?source=main" target="_blank">Read More</a>
+  </div>
 
-    let currentQuery = "Ghana AND youth";
-    let currentPage = 1;
+  <div class="news-card show">
+    <img src="download/scholarship4.jpg" alt="Scholarship">
+    <h3>Global Scholarship For International Students 2024</h3>
+    <p><strong>Deadline:</strong> Varies</p>
+    <p>Annual scholarship supporting international students pursuing higher education outside their home countries.</p>
+    <a href="https://theglobalscholarship.org/abroad-scholarships/global-scholarship-for-international-students-2024" target="_blank">Read More</a>
+  </div>
 
-    // Fetch News
-    async function fetchNews(query = "Ghana AND youth", page = 1, reset = false) {
-      if (reset) {
-        newsContainer.innerHTML = "<p>Loading news...</p>";
-      }
+  <div class="news-card show">
+    <img src="download/scholarship5.jpg" alt="Scholarship">
+    <h3>Everest Scholarship 2025</h3>
+    <p><strong>Deadline:</strong> Varies</p>
+    <p>Supports students pursuing degrees in Arts & Science or Engineering at accredited colleges in Chennai or Coimbatore.</p>
+    <a href="https://theglobalscholarship.org/scholarships/everest-scholarship-2025?source=main" target="_blank">Read More</a>
+  </div>
 
-      const url = `https://newsapi.org/v2/everything?q=${encodeURIComponent(query)}&pageSize=9&page=${page}&sortBy=publishedAt&language=en&apiKey=${apiKey}`;
+  <div class="news-card show">
+    <img src="download/scholarship6.jpg" alt="Scholarship">
+    <h3>Global Excellence Scholarship</h3>
+    <p><strong>Deadline:</strong> Varies</p>
+    <p>For international students enrolled in courses offered by the Peter Faber Business School at the Australian Catholic University.</p>
+    <a href="https://theglobalscholarship.org/abroad-scholarships/-global-excellence-scholarship?source=main" target="_blank">Read More</a>
+  </div>
 
-      try {
-        const res = await fetch(url);
-        const data = await res.json();
+  <div class="news-card show">
+    <img src="download/scholarship.jpg" alt="Scholarship">
+    <h3>Success Educational Trust Scholarship 2025</h3>
+    <p><strong>Deadline:</strong> Varies</p>
+    <p>For Indian citizens and permanent residents of Tamil Nadu pursuing higher education with a family income below 6 lakh per annum.</p>
+    <a href="https://theglobalscholarship.org/abroad-scholarships/success-educational-trust-scholarship-2025" target="_blank">Read More</a>
+  </div>
+</section>
 
-        if (reset) newsContainer.innerHTML = "";
+<div class="load-more-container">
+  <button id="loadMoreBtn" onclick="loadMoreNews()">Load More</button>
+</div>
 
-        if (!data.articles || data.articles.length === 0) {
-          if (page === 1) {
-            newsContainer.innerHTML = "<p>No matching news found.</p>";
-          }
-          return;
-        }
+<script>
+  const searchInput = document.getElementById("searchInput");
+  const newsCards = document.querySelectorAll(".news-card");
+  let visibleCount = 3; // show 3 initially
 
-        data.articles.forEach(article => {
-          const card = document.createElement("div");
-          card.classList.add("news-card");
-          card.innerHTML = `
-            ${article.urlToImage ? `<img src="${article.urlToImage}" alt="News">` : ""}
-            <h3>${article.title}</h3>
-            <p>${article.description || "No description available."}</p>
-            <a href="${article.url}" target="_blank">Read More</a>
-          `;
-          newsContainer.appendChild(card);
-        });
-
-      } catch (err) {
-        console.error("Error fetching news:", err);
-        if (reset) {
-          newsContainer.innerHTML = "<p>Failed to load news.</p>";
-        }
-      }
-    }
-
-    // Search Function
-    function searchNews() {
-      currentQuery = searchInput.value.trim() || "Ghana AND youth";
-      currentPage = 1;
-      fetchNews(currentQuery, currentPage, true);
-    }
-
-    // Refresh Function
-    function refreshNews() {
-      searchInput.value = "";
-      currentQuery = "Ghana AND youth";
-      currentPage = 1;
-      fetchNews(currentQuery, currentPage, true);
-    }
-
-    // Load More Function
-    function loadMoreNews() {
-      currentPage++;
-      fetchNews(currentQuery, currentPage, false);
-    }
-
-    // Enter Key
-    searchInput.addEventListener("keypress", (e) => {
-      if (e.key === "Enter") {
-        searchNews();
-      }
+  function showCards(count) {
+    newsCards.forEach((card, index) => {
+      if(index < count) card.classList.add("show");
+      else card.classList.remove("show");
     });
+  }
 
-    // Initial News
-    fetchNews(currentQuery, currentPage, true);
-  </script>
+  function loadMoreNews() {
+    visibleCount += 3; // show 3 more cards
+    showCards(visibleCount);
+  }
+
+  function searchNews() {
+    const query = searchInput.value.toLowerCase();
+    newsCards.forEach(card => {
+      const text = card.textContent.toLowerCase();
+      card.style.display = text.includes(query) ? "block" : "none";
+    });
+  }
+
+  function refreshNews() {
+    searchInput.value = "";
+    showCards(visibleCount);
+  }
+
+  showCards(visibleCount);
+
+  searchInput.addEventListener("keypress", e => {
+    if(e.key === "Enter") searchNews();
+  });
+</script>
 
 </body>
 </html>
