@@ -107,46 +107,87 @@
       gap: 15px;
     }
 
+    /* Enhanced form inputs, textarea, and select */
     input, textarea, select {
-      padding: 12px;
+      padding: 14px 16px;
       border: none;
-      border-radius: 8px;
+      border-radius: 12px;
       outline: none;
       font-size: 16px;
+      background: rgba(0, 255, 204, 0.15);
+      color: #fff;
+      backdrop-filter: blur(6px);
+      box-shadow: inset 0 2px 8px rgba(0,0,0,0.3);
+      transition: background 0.3s, box-shadow 0.3s, transform 0.2s, color 0.3s;
     }
 
+    input:focus, textarea:focus, select:focus {
+      background: rgba(0, 255, 204, 0.25);
+      box-shadow: inset 0 2px 12px rgba(0,255,204,0.5), 0 4px 12px rgba(0,0,0,0.4);
+      transform: scale(1.02);
+      color: #000;
+    }
+
+    /* Placeholder styling */
+    input::placeholder, textarea::placeholder {
+      color: rgba(255,255,255,0.7);
+    }
+
+    /* Dropdown arrow and style */
+    select {
+      color: #fff;
+      appearance: none;
+      background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg width='14' height='8' viewBox='0 0 14 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L7 7L13 1' stroke='white' stroke-width='2'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      background-size: 14px 8px;
+      padding-right: 36px;
+    }
+
+    /* Textarea fixed height */
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    /* Enhanced submit button */
     button {
-      padding: 12px;
+      padding: 14px;
       border: none;
-      border-radius: 8px;
-      background: #00ffcc;
+      border-radius: 12px;
+      background: linear-gradient(90deg, #00ffcc, #00d4aa);
       color: #000;
       font-size: 16px;
       font-weight: bold;
       cursor: pointer;
-      transition: background 0.3s;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s, box-shadow 0.3s;
     }
 
     button:hover {
-      background: #00d4aa;
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
     }
 
+    /* Enhanced Back-to-Home Button */
     .back-btn {
       display: inline-block;
       margin-top: 25px;
-      padding: 10px 16px;
+      padding: 12px 18px;
       border: none;
-      border-radius: 8px;
-      background: #4cafef;
-      color: #fff;
-      font-size: 14px;
+      border-radius: 12px;
+      background: linear-gradient(90deg, #00ffcc, #00d4aa);
+      color: #000;
+      font-size: 16px;
       text-decoration: none;
       font-weight: bold;
-      transition: background 0.3s;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s, box-shadow 0.3s;
     }
 
     .back-btn:hover {
-      background: #2196f3;
+      transform: scale(1.1);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
     }
 
     /* Hidden by default */
@@ -217,7 +258,7 @@
     const thankyouCard = document.getElementById("thankyou-card");
 
     form.addEventListener("submit", async function(e) {
-      e.preventDefault(); // stop normal form submission
+      e.preventDefault();
 
       const formData = new FormData(form);
       const response = await fetch(form.action, {
